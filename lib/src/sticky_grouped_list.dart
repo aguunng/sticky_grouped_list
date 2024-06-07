@@ -187,7 +187,7 @@ class StickyGroupedListViewState<T, E>
   @protected
   double? headerDimension;
 
-  final StreamController<int> _streamController = StreamController<int>();
+  final StreamController<int> _streamController = StreamController<int>.broadcast();
   late ItemPositionsListener _listener;
   late GroupedItemScrollController _controller;
   GlobalKey? _groupHeaderKey;
@@ -293,7 +293,7 @@ class StickyGroupedListViewState<T, E>
                 initialData: _topElementIndex,
                 builder: (_, snapshot) => _showFixedGroupHeader(snapshot.data!),
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
       ],
     );
   }
